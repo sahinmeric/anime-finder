@@ -13,14 +13,16 @@ const SearchResults: React.FC<SearchResultsProps> = ({
 }) => {
   if (loading) return <p className="text-center">Loading...</p>;
   if (error)
-    return <p className="text-center text-red-500">Error: {error.message}</p>;
+    return (
+      <p className="text-center text-red-500">
+        Error on fetching animes. Please try again.
+      </p>
+    );
 
-  if (!data || !data.Page || !data.Page.media) {
-    return <p className="text-center text-gray-500">No results found</p>;
-  }
+  if (!data || !data.Page || !data.Page.media) return;
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 mx-4">
       {data.Page.media.map((anime: Anime) => (
         <div
           key={anime.id}
