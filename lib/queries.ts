@@ -1,9 +1,20 @@
 import { gql } from "@apollo/client";
 
-export const GET_SEARCHED_ANIME = gql`
-  query SearchAnime($search: String!) {
-    Page {
-      media(search: $search, type: ANIME) {
+export const GET_ANIME_BY_FILTERS = gql`
+  query GetAnimeByFilters(
+    $genre: [String]
+    $year: Int
+    $season: MediaSeason
+    $format: MediaFormat
+  ) {
+    Page(page: 1, perPage: 16) {
+      media(
+        genre_in: $genre
+        seasonYear: $year
+        season: $season
+        format: $format
+        type: ANIME
+      ) {
         id
         title {
           romaji
@@ -15,24 +26,8 @@ export const GET_SEARCHED_ANIME = gql`
         }
         episodes
         genres
-      }
-    }
-  }
-`;
-
-export const GET_RANDOM_ANIME = gql`
-  query GetRandomAnime {
-    Page(page: 1, perPage: 5) {
-      media {
-        id
-        title {
-          romaji
-          english
-        }
-        coverImage {
-          large
-        }
-        description
+        season
+        seasonYear
       }
     }
   }
