@@ -27,7 +27,7 @@ export const GET_ANIME_BY_FILTERS = gql`
     $season: MediaSeason
     $format: MediaFormat
   ) {
-    Page(page: 1, perPage: 16) {
+    Page(page: 1, perPage: 20) {
       media(
         genre_in: $genre
         seasonYear: $year
