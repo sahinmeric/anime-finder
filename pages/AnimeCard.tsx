@@ -6,13 +6,13 @@ interface AnimeCardProps {
 }
 
 const AnimeCard: React.FC<AnimeCardProps> = ({ anime }) => {
-  const placeholderImage = "/img/placeholder/placeholder_no_image.jpg"; // Placeholder image path from public folder
+  const placeholderImage = "/img/placeholder/placeholder_no_image.jpg";
 
   return (
     <div className="anime-card bg-white shadow-lg rounded-lg overflow-hidden flex flex-col justify-between h-full">
       <div className="flex-grow">
         <Image
-          src={anime?.coverImage?.large || placeholderImage} // Use placeholder image if coverImage is undefined
+          src={anime?.coverImage?.large || placeholderImage}
           alt={anime?.title?.english || anime?.title?.romaji || "Unknown Anime"}
           width={300}
           height={400}
