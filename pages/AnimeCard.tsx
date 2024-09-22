@@ -10,7 +10,10 @@ const AnimeCard: React.FC<AnimeCardProps> = ({ anime }) => {
     <div className="anime-card bg-white shadow-lg rounded-lg overflow-hidden flex flex-col justify-between h-full">
       <div className="flex-grow">
         <Image
-          src={anime.coverImage.large}
+          src={
+            anime.coverImage?.large ||
+            "/img/placeholder/placeholder_no_image.jpg"
+          }
           alt={anime.title.english || anime.title.romaji}
           width={300}
           height={400}
